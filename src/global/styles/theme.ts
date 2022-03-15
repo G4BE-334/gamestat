@@ -4,6 +4,8 @@ export const theme = {
         //background: '#B23B42',
         background100: '#E0DCD5',
         background80: '#F5F5F5',
+        background60: '#8e8e8e',
+        background50: '#9e9e9e',
         heading: '#FBFEFF',
         //title: '#A0393D',
         //primary: '#1B60DC',
