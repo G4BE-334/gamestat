@@ -50,7 +50,7 @@ export function SignIn(){
           onPress={handleSignIn}
           />
 
-        {/*<CategorySelect categorySelected={category} setCategory={handleCategorySelect}/>*/}
+        
 
       </View>
     </View>
