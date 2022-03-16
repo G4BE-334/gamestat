@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
         },
     image: {
         width: '100%',
-        height: 480
+        height: 460
     },
     content: {
         marginTop: -40,
@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
         color: theme.colors.primary,
         fontSize: 15,
         textAlign: 'center',
-        marginBottom: 64,
+        marginBottom: 20,
         fontFamily: theme.font.title500,
         lineHeight: 25
     }
