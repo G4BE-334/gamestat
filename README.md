@@ -16,10 +16,10 @@ There will be a full support to Discord authentication and integration.
   
  # Configuration
   To run this project you would have to download some of the technologies utilized, like:
-    - Node & NPM
-    - Yarn
-    - Expo
-    - Visual Studio Code
+- Node & NPM
+- Yarn
+- Expo
+- Visual Studio Code
     
  # Execution
   After all technologies are correctly donwloaded and installed, you can start the project by running:
