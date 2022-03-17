@@ -4,22 +4,22 @@ This is a scheduling and connect gameplay application, where the user can create
 There will be a full support to Discord authentication and integration.
 
 # Technologies
-  React-Native
-  TypeScript
-  Expo
-  Async Storage
-  Context API
-  Vector Icon
-  Axios
-  React Native libraries
-  Expo libraries
+  . React-Native
+  . TypeScript
+  . Expo
+  . Async Storage
+  . Context API
+  . Vector Icon
+  . Axios
+  . React Native libraries
+  . Expo libraries
   
  # Configuration
   To run this project you would have to download some of the technologies utilized, like:
-    Node & NPM
-    Yarn
-    Expo
-    Visual Studio Code
+    . Node & NPM
+    . Yarn
+    . Expo
+    . Visual Studio Code
     
  # Execution
   After all technologies are correctly donwloaded and installed, you can start the project by running:
