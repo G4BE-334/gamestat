@@ -13,7 +13,7 @@ import { theme } from "../../global/styles/theme";
 
 export type GuildProps = {
     id: string,
-    server: string,
+    name: string,
     icon: null,
     owner: boolean
 }
@@ -43,7 +43,7 @@ export function Appointment({data, ...rest}: Props) {
                 <View style={styles.content}>
                     <View style={styles.header}>
                         <Text style = {styles.title}>
-                            {data.guild.server}
+                            {data.guild.name}
                         </Text>
                         <Text style={styles.category}>
                             {category.title}

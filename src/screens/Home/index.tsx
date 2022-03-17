@@ -24,7 +24,7 @@ export function Home() {
       id: '1',
       guild: {
         id: '1',
-        server: 'The Legends',
+        name: 'The Legends',
         icon: null,
         owner: true
       },
@@ -36,7 +36,7 @@ export function Home() {
       id: '2',
       guild: {
         id: '1',
-        server: 'The Legends',
+        name: 'The Legends',
         icon: null,
         owner: true
       },
