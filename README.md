@@ -1,4 +1,5 @@
-# This is a React Native mobile application inspired on the RocketSeat online coruse Next Level Week Together: React Native.
+# Project GameStat
+## This is a React Native mobile application inspired on the RocketSeat online coruse Next Level Week Together: React Native.
 
 This is a scheduling and connect gameplay application, where the user can create squads with friends on discord and schedule games to play together.
 There will be a full support to Discord authentication and integration.
