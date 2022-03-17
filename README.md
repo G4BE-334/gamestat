@@ -4,7 +4,7 @@
 This is a scheduling and connect gameplay application, where the user can create squads with friends on discord and schedule games to play together.
 There will be a full support to Discord authentication and integration.
 
-# Technologies:
+## Technologies:
 - React-Native
 - TypeScript
 - Expo
@@ -15,14 +15,14 @@ There will be a full support to Discord authentication and integration.
 - React Native libraries
 - Expo libraries
   
- # Configuration
+ ## Configuration
   To run this project you would have to download some of the technologies utilized, like:
 - Node & NPM
 - Yarn
 - Expo
 - Visual Studio Code
     
- # Execution
+ ## Execution
   After all technologies are correctly donwloaded and installed, you can start the project by running:
   
   ```expo start```
