@@ -3,12 +3,13 @@ import {theme} from '../../global/styles/theme';
 
 export const styles = StyleSheet.create({
     container: {
-        width: '100%',
+        width: '90%',
         height: 56,
         backgroundColor: theme.colors.primary,
         borderRadius: 8,
         flexDirection: 'row',
         alignItems: 'center',
+        marginHorizontal: '5%',
         
     },
     title: {

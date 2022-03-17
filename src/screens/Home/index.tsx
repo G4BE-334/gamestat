@@ -66,7 +66,7 @@ export function Home() {
           <ButtonAdd onPress={handleAppointmentCreate}/>
         </View>
         
-        {/*<CategorySelect categorySelected={category} setCategory={handleCategorySelect}/>*/}
+        <CategorySelect categorySelected={category} setCategory={handleCategorySelect}/>
 
         <View style={styles.content}>
             <ListHeader title="Scheduled matches" subtitle="Total: 6"/>

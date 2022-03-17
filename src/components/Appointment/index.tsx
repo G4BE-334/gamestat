@@ -4,7 +4,7 @@ import { View, Text } from "react-native";
 
 import {styles} from './styles';
 import PlayerSvg from '../../assets/player.svg';
-import calendarSvg from '../../assets/calendar.svg';
+import CalendarSvg from '../../assets/calendar.svg';
 
 
 import { GuildIcon } from "../GuildIcon";
@@ -52,7 +52,7 @@ export function Appointment({data, ...rest}: Props) {
 
                     <View style={styles.footer}>
                         <View style={styles.info}>
-                            {/*<CalendarSvg/>*/}
+                            <CalendarSvg/>
                         </View>
                         <Text style = {styles.date}>
                             {data.date}
@@ -60,7 +60,7 @@ export function Appointment({data, ...rest}: Props) {
                     
 
                         <View style={styles.info}>
-                            {/*<PlayerSvg fill={!owner? primary : on}/>*/}
+                            <PlayerSvg fill={!owner? primary : on}/>
 
                             <Text style={[styles.player, {color: owner? primary : on}]}>
                                 {owner ? 'Host' : 'Player'}

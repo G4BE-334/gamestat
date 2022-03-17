@@ -52,7 +52,7 @@ export function AppointmentCreate() {
                         Categories
                     </Text>
 
-                    {/*<CategorySelect hasCheckBox setCategory={setCategory} categorySelected={category} />*/}
+                    <CategorySelect hasCheckBox setCategory={setCategory} categorySelected={category} />
 
                     <View style={styles.form}>
                         <RectButton onPress={handleOpenGuilds}>
@@ -116,7 +116,7 @@ export function AppointmentCreate() {
             </ScrollView>
 
             <ModalView visible={openGuildsModal}>
-                <Guilds handleGuildSelect={handleOpenGuilds}/>
+                <Guilds handleGuildSelect={handleGuildSelect}/>
             </ModalView>
             
         </KeyboardAvoidingView>  

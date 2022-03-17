@@ -12,7 +12,7 @@ export const theme = {
         primary: '#A0393D',
         //line: '#51AEE2'
         line: '#FF6865',
-        overlay: 'rgba(0, 0, 0, 0, 7)',
+        overlay: 'rgba(0, 0, 0, 0.7)',
         highlight: '#ABB1CC',
         on: '#32BD50',
         off: '#E51C44',
