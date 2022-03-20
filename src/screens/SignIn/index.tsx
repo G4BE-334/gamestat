@@ -1,21 +1,33 @@
 // This is the SignIn interface where the user will initialize log in into their account
-import React from 'react';
+import React, {useContext} from 'react';
 import {View,
         Text,
         Image,
+        Alert,
+        ActivityIndicator
         }  from 'react-native';
 import { ButtonIcon } from '../../components/ButtonIcon';
 import IllustrationImg from '../../assets/illustration.png'
 import {styles} from './styles';
-import { useNavigation } from '@react-navigation/native';
 import { Background } from '../../components/Background';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../routes/auth.routes';
+import {useAuth} from '../../hooks/auth';
+import { theme } from '../../global/styles/theme';
 
 
 export function SignIn(){
-  const navigation = useNavigation();
 
-  function handleSignIn() {
-    navigation.navigate('Home');
+  const {loading, signIn} = useAuth();
+
+
+
+  async function handleSignIn() {
+    try {
+      await signIn();
+    } catch (error) {
+      Alert.alert(error);
+    }
   }
 
 
@@ -43,14 +55,15 @@ export function SignIn(){
             </Text>
 
             <View style = {styles.footer}>
-              <ButtonIcon
-                title = "Log in to Discord"
-                onPress={handleSignIn}
-              />
-            </View>
-
-            
-
+              {
+                loading ? <ActivityIndicator color={theme.colors.primary}/>
+                :
+                <ButtonIcon
+                  title = "Log in to Discord"
+                  onPress={handleSignIn}
+                />
+              }
+            </View>         
           </View>
         </View>
       </Background>

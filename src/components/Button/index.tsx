@@ -10,10 +10,11 @@ import { styles } from './styles';
 // plus any customized properties that we want to add
 type Props = RectButtonProps & {
     title: string;
+    checked?: boolean;
 
 }
 
-export function Button({title, ...rest}: Props) {
+export function Button({title, checked, ...rest}: Props) {
     return (
        <RectButton 
        style = {styles.container}

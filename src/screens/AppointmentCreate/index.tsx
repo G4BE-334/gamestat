@@ -20,7 +20,7 @@ import { Guilds } from "../Guilds";
 
 import { CategorySelect } from "../../components/CategorySelect";
 import { RectButton } from "react-native-gesture-handler";
-import { GuildProps } from "../../components/Appointment";
+import { GuildProps } from "../../components/Guild";
 
 
 
@@ -36,11 +36,19 @@ export function AppointmentCreate() {
     function handleOpenGuilds() {
         setOpenGuildsModal(true);
     }
+
+    function handleCloseGuilds() {
+        setOpenGuildsModal(false);
+    }
+
     function handleGuildSelect(guildSelected: GuildProps) {
         setGuild(guildSelected);
         setOpenGuildsModal(false);
-
     }
+
+    function handleCategorySelect(categoryId: string) {
+        setCategory(categoryId);
+      }
     
     return (
         <KeyboardAvoidingView style= {styles.container} behavior={Platform.OS == 'ios' ? 'padding' : 'height'}>
@@ -52,7 +60,7 @@ export function AppointmentCreate() {
                         Categories
                     </Text>
 
-                    <CategorySelect hasCheckBox setCategory={setCategory} categorySelected={category} />
+                    <CategorySelect hasCheckBox setCategory={handleCategorySelect} categorySelected={category} />
 
                     <View style={styles.form}>
                         <RectButton onPress={handleOpenGuilds}>
@@ -75,7 +83,7 @@ export function AppointmentCreate() {
                         
                         <View style={styles.field}>
                             <View>
-                                <Text style = {styles.label}> Date </Text>
+                                <Text style = {[styles.label, {marginBottom: 12}]}> Date </Text>
 
                                 <View style={styles.column}>
                                     <SmallInput maxLength={2} />
@@ -85,12 +93,19 @@ export function AppointmentCreate() {
                             </View>
                             
                             <View>
-                                <Text style = {styles.label}> Time </Text>
+                                <Text style={[styles.label, {marginBottom: 12}]}> Time </Text>
 
                                 <View style={styles.column}>
                                     <SmallInput maxLength={2} />
                                     <Text style={styles.divider}> : </Text>
                                     <SmallInput maxLength={2} />
+
+                                    <View>
+                                        <Button title={"PM"} style={styles.button1}/>
+                                        <Button title={"AM"} style={styles.button2}/>
+
+                                    </View>
+                                    
                                 </View>
                             </View>
 
@@ -101,9 +116,9 @@ export function AppointmentCreate() {
                     </View>
 
                     <View style={[styles.field, {marginBottom: 12}]}>
-                        <Text style={styles.label}> Description </Text>
+                        <Text style={[styles.label, {marginLeft: 20}]}> Description </Text>
                         
-                        <Text style ={styles.charLimit}> Max 100 characters</Text>
+                        <Text style={[styles.charLimit, {marginRight: 20}]}> Max 100 characters</Text>
                     </View>
 
                     <TextArea multiline maxLength={100} numberOfLines={5} autoCorrect={false}/>
@@ -115,7 +130,7 @@ export function AppointmentCreate() {
                 </Background>
             </ScrollView>
 
-            <ModalView visible={openGuildsModal}>
+            <ModalView visible={openGuildsModal} closeModal={handleCloseGuilds}>
                 <Guilds handleGuildSelect={handleGuildSelect}/>
             </ModalView>
             

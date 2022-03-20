@@ -12,14 +12,20 @@ import { theme } from '../global/styles/theme';
 
 const {Navigator, Screen} = createStackNavigator();
 
+export type RootStackParamList = {
+  SignIn: undefined;
+  Home: undefined;
+  AppointmentDetails: undefined;
+  AppointmentCreate: undefined;
+}
+
 export function AuthRoutes() {
   return (
     <Background>
-      <Navigator headerMode = "none" screenOptions = {{cardStyle: {backgroundColor: theme.colors.background100}}}>
-        <Screen name="SignIn" component={SignIn} />
-        <Screen name="Home" component={Home} />
-        <Screen name="AppointmentDetails" component={AppointmentDetails} />
-        <Screen name="AppointmentCreate" component={AppointmentCreate} />
+      <Navigator screenOptions = {{cardStyle: {backgroundColor: theme.colors.background100}}}>
+        <Screen name="Home" component={Home} options={{ headerShown: false}}/>
+        <Screen name="AppointmentDetails" component={AppointmentDetails} options={{ headerShown: false}}/>
+        <Screen name="AppointmentCreate" component={AppointmentCreate}options={{ headerShown: false}} />
       </Navigator>
     </Background>
   );

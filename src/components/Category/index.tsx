@@ -9,7 +9,7 @@ import { theme } from "../../global/styles/theme";
 
 type Props = RectButtonProps & {
     title: string;
-    icon: React.FC<SvgProps>;
+    icon?: React.FC<SvgProps>;
     checked?: boolean;
     hasCheckBox?: boolean;
 }

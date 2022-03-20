@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     title: {
         color: theme.colors.primary,
         textAlign: 'center',
-        fontSize: 40,
+        fontSize: 36,
         marginBottom: 16,
         fontFamily: theme.font.title700,
         lineHeight: 40

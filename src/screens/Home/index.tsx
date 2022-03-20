@@ -13,11 +13,15 @@ import { Background } from '../../components/Background';
 
 import { styles } from "./styles";
 import { useNavigation } from "@react-navigation/native";
+import { RootStackParamList } from "../../routes/auth.routes";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 export function Home() {
   const [category, setCategory] = useState('');
 
-  const navigation = useNavigation();
+  type homeScreenProp = StackNavigationProp<RootStackParamList, 'Home'>;
+
+  const navigation = useNavigation<homeScreenProp>();
 
   const appointments = [
     {
@@ -43,12 +47,61 @@ export function Home() {
       category: '1',
       date: '04/16 at 8PM',
       description: 'Tonight we dine in HELL'
+    },
+    {
+      id: '3',
+      guild: {
+        id: '1',
+        name: 'The Legends',
+        icon: null,
+        owner: true
+      },
+      category: '1',
+      date: '04/16 at 8PM',
+      description: 'Tonight we dine in HELL'
+    },
+    {
+      id: '4',
+      guild: {
+        id: '1',
+        name: 'The Legends',
+        icon: null,
+        owner: true
+      },
+      category: '1',
+      date: '04/16 at 8PM',
+      description: 'Tonight we dine in HELL'
+    },
+    {
+      id: '5',
+      guild: {
+        id: '1',
+        name: 'The Legends',
+        icon: null,
+        owner: true
+      },
+      category: '1',
+      date: '04/16 at 8PM',
+      description: 'Tonight we dine in HELL'
+    },
+    {
+      id: '6',
+      guild: {
+        id: '1',
+        name: 'The Legends',
+        icon: null,
+        owner: true
+      },
+      category: '1',
+      date: '04/16 at 8PM',
+      description: 'Tonight we dine in HELL'
     }
   ]
   
   function handleCategorySelect(categoryId: string) {
     categoryId === category ? setCategory ('') : setCategory(categoryId);
   }
+
 
   function handleAppointmentDetails() {
     navigation.navigate('AppointmentDetails');
@@ -68,15 +121,15 @@ export function Home() {
         
         <CategorySelect categorySelected={category} setCategory={handleCategorySelect}/>
 
-        <View style={styles.content}>
-            <ListHeader title="Scheduled matches" subtitle="Total: 6"/>
-            <FlatList data = {appointments} keyExtractor={item => item.id} renderItem={({ item }) => (
-              <Appointment 
-              data={item}
-              onPress={handleAppointmentDetails}/>)} 
-              style={styles.matches} showsVerticalScrollIndicator={false}
-              ItemSeparatorComponent={() => <ListDivider/>}/>
-        </View>
+        <ListHeader title="Scheduled matches" subtitle="Total: 6"/>
+
+        <FlatList data = {appointments} keyExtractor={item => item.id} renderItem={({ item }) => (
+          <Appointment 
+          data={item}
+          onPress={handleAppointmentDetails}/>)} 
+          style={styles.matches} showsVerticalScrollIndicator={false}
+          ItemSeparatorComponent={() => <ListDivider/>}
+          contentContainerStyle={{paddingBottom: 69}}/>
     </Background>
   );
 }

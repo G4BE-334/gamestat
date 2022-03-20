@@ -1,13 +1,15 @@
 import React from 'react';
-import {StatusBar} from 'react-native';
+import {StatusBar, LogBox} from 'react-native';
 import {useFonts} from  'expo-font';
 import { Mulish_500Medium, Mulish_700Bold} from '@expo-google-fonts/mulish';
 import {Rubik_400Regular, Rubik_500Medium} from '@expo-google-fonts/rubik';
 import AppLoading from 'expo-app-loading';
+import { AuthProvider } from './src/hooks/auth';
 
-import {Home} from './src/screens/Home';
 import { Routes }  from './src/routes';
 import {Background} from './src/components/Background';
+
+LogBox.ignoreLogs(['You are not currently signed in to Expo on your development machine.']);
 
 export default function App(){
   const [fontsLoaded] = useFonts ({
@@ -28,7 +30,9 @@ export default function App(){
   React native app will only return 1 element at once, so this is used to return more than on element as one */}
       {/* This status bar will make sure that the bar on top of the mobile phone is showing but containing the background color*/}
       <StatusBar barStyle="light-content" backgroundColor="transparent" translucent/>
-      <Routes/>
+      <AuthProvider>
+        <Routes/>
+      </AuthProvider>
     </>
   );
 }

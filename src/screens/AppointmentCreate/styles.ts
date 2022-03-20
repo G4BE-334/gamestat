@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
     },
     select: {
         width: '100%',
-        height: '68',
+        height: 68,
         flexDirection: 'row',
         borderColor: theme.colors.background50,
         borderWidth: 1,
@@ -33,6 +33,7 @@ export const styles = StyleSheet.create({
         height: 68,
         width: 64,
         backgroundColor: theme.colors.background50,
+        borderColor: theme.colors.background60,
         borderRadius: 8,
         borderWidth: 1
     },
@@ -55,10 +56,27 @@ export const styles = StyleSheet.create({
     charLimit: {
         fontFamily: theme.font.text400,
         fontSize: 13,
-        color: theme.colors.highlight
+        color: theme.colors.highlight,
+        marginTop: 5
     },
     footer: {
         marginVertical: 20,
         marginBottom: 56,
-    }
+    },
+    button1: {
+        width: 22,
+        height: 22,
+        backgroundColor: theme.colors.background50,
+        borderRadius: 5,
+        marginBottom: 4,
+        marginLeft: 10
+    },
+    button2: {
+        width: 22,
+        height: 22,
+        backgroundColor: theme.colors.background50,
+        borderRadius: 5,
+        marginLeft: 10
+
+    },
 })
