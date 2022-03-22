@@ -10,8 +10,6 @@ import { ButtonIcon } from '../../components/ButtonIcon';
 import IllustrationImg from '../../assets/illustration.png'
 import {styles} from './styles';
 import { Background } from '../../components/Background';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../../routes/auth.routes';
 import {useAuth} from '../../hooks/auth';
 import { theme } from '../../global/styles/theme';
 
@@ -22,12 +20,16 @@ export function SignIn(){
 
 
 
+
   async function handleSignIn() {
     try {
       await signIn();
-    } catch (error) {
-      Alert.alert(error);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        Alert.alert(error.message);
+      }
     }
+    
   }
 
 

@@ -13,6 +13,8 @@ type Props = {
 
 export function CategorySelect({categorySelected, setCategory, hasCheckBox = false,}: Props) {
   return (
+    // ScrollView is a good option when there is not a lot of elements to be dislpayed
+    // FlatList is better for many items because it will render them as they are being scrolled
     <ScrollView horizontal style = {styles.container} showsHorizontalScrollIndicator={false} contentContainerStyle= {{paddingRight: 40}}>
       {
         categories.map(category => (

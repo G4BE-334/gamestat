@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useState} from 'react';
+import React, {createContext, ReactNode, useContext, useState} from 'react';
 
 type User = {
     id: string;
@@ -14,6 +14,7 @@ import * as AuthSession from 'expo-auth-session'
 
 import {SCOPE, CLIENT_ID, REDIRECT_URI, CDN_IMAGE, RESPONSE_TYPE} from '../configs';
 import { api } from '../services/api';
+import { Alert } from 'react-native';
 
 type AuthContextData = {
     user: User;
@@ -22,12 +23,12 @@ type AuthContextData = {
 }
 
 type AuthProviderProps = {
-    children: React.ReactNode;
+    children: ReactNode;
 }
 
 type AuthorizationResponse = AuthSession.AuthSessionResult & {
     params: {
-        access_token: string;
+        access_token?: string;
     }
 }
 
@@ -41,16 +42,15 @@ function AuthProvider({children}: AuthProviderProps) {
         try {
             setLoading(true);
 
-            const authUrl = `${api.defaults.baseURL}/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`;
+            const authUrl = `${api.defaults.baseURL}/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`
             
             const {type, params} = await AuthSession.startAsync({ authUrl }) as AuthorizationResponse;
 
             if (type === "success") {
-                console.log("success");
+                // Get the access token and parse it to all the screens for it to use.
                 api.defaults.headers.common['Authorization'] = `Bearer ${params.access_token}`;
-                console.log('success again');
 
-                const userInfo = await api.get('/user/@me');
+                const userInfo = await api.get('/users/@me');
                 const firstName = userInfo.data.username.split(' ')[0];
                 userInfo.data.avatar = `${CDN_IMAGE}/avatars/${userInfo.data.id}/${userInfo.data.avatar}.png`;
 
@@ -60,15 +60,14 @@ function AuthProvider({children}: AuthProviderProps) {
                     token: params.access_token
                 });
 
-                setLoading(false);
-            } else{
-                setLoading(false);
-            }
+               
 
             AuthSession.startAsync({ authUrl });
-
-        } catch {
-            throw new Error('Error sigining in to Discord');
+            }
+        } catch  {
+            throw new Error("It was not possible to sign in to Discord")
+        } finally{
+            setLoading(false);
         }
     }
 

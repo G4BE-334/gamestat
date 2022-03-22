@@ -52,6 +52,8 @@ export function AppointmentCreate() {
     
     return (
         <KeyboardAvoidingView style= {styles.container} behavior={Platform.OS == 'ios' ? 'padding' : 'height'}>
+            {/* ScrollView is used here so the user can scroll up and down when typing in the text box.
+            In case the user has a small screen and want to have access to the keyboard without losing UX*/}
             <ScrollView>
                 <Background>
                     <Header title="Schedule game"/>

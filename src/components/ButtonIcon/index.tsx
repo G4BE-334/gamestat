@@ -14,6 +14,7 @@ type Props = RectButtonProps & {
 
 }
 
+// Here we can reutilized the props created outside the component
 export function ButtonIcon({title, ...rest}: Props) {
     return (
        <RectButton 

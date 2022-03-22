@@ -12,6 +12,7 @@ import {Background} from './src/components/Background';
 LogBox.ignoreLogs(['You are not currently signed in to Expo on your development machine.']);
 
 export default function App(){
+  // Load fonts before application start
   const [fontsLoaded] = useFonts ({
     Mulish_500Medium,
     Mulish_700Bold,
