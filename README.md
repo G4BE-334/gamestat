@@ -38,4 +38,9 @@ There will be a full support to Discord authentication and integration.
   
   *The discord server will only open if the server widget is enabled. You can only enable a server widget if you are the owner or have admin rights of the server. To do so just: Click on the server > Server setting > Click on "Widget" on left side > Click on "Enable server widget". Also make sure to set up a invite channel for the invite button to work. In case you are not an owner of the channel the invite button and open server button will be disabled on the application*
   
-  
+  ## Improvements:
+  *** Remember to:
+    - Create custom flash 
+    - Fix PM/AM buttons 
+    - Add Sign out Modal
+    - Create dark mode? ***
