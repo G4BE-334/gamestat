@@ -40,7 +40,7 @@ There will be a full support to Discord authentication and integration.
   
   ## Improvements:
   *** Remember to:
-    - Create custom flash
-    - Fix PM/AM buttons
+    - Create custom flash 
+    - Fix PM/AM buttons 
     - Add Sign out Modal
     - Create dark mode? ***
