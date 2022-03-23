@@ -69,7 +69,7 @@ export function AppointmentCreate() {
                             <View style={styles.select}>
                                 {
                                     /* If there is a guild icon, use it, otherwise just use a regular image */
-                                    guild.icon ? <GuildIcon/> : <View style={styles.image}/>
+                                    guild.icon ? <GuildIcon guildId={guild.id} iconId={guild.icon}/> : <View style={styles.image}/>
                                 }
                                 <View style={styles.selectBody}>
                                     <Text style={styles.label}>
