@@ -28,14 +28,14 @@ type Props = RectButtonProps & {
 export function Appointment({data, ...rest}: Props) {
     const [category] = categories.filter(item => item.id === data.category);
     const {owner} = data.guild;
-    const {primary, on, background50, background60} = theme.colors;
+    const {primary, on, off, background50, background60} = theme.colors;
     
     return (
         <RectButton {...rest}> 
 
             <View style={styles.container}>
                 <LinearGradient style = {styles.guildIconContainer} colors = {[background50, background60]}>
-                    <GuildIcon/>
+                    <GuildIcon guildId={data.guild.id} iconId={data.guild.icon}/>
                 </LinearGradient>
             
                 <View style={styles.content}>
@@ -58,10 +58,10 @@ export function Appointment({data, ...rest}: Props) {
                     
 
                         <View style={styles.info}>
-                            <PlayerSvg fill={!owner? primary : on}/>
+                            <PlayerSvg fill={!owner? off : on}/>
 
-                            <Text style={[styles.player, {color: owner? primary : on}]}>
-                                {owner ? 'Host' : 'Player'}
+                            <Text style={[styles.player, {color: owner ? on : off}]}>
+                                {owner ? 'Host' : 'Guest'}
                             </Text>
                         </View>
                     </View>

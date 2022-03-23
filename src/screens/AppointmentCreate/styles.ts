@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     label: {
         fontSize: 18,
         fontFamily: theme.font.title700,
-        color: theme.colors.heading,
+        color: theme.colors.primary,
     },
     form: {
         paddingHorizontal: 24,
@@ -69,6 +69,7 @@ export const styles = StyleSheet.create({
         backgroundColor: theme.colors.background50,
         borderRadius: 5,
         marginBottom: 4,
+        color: theme.colors.primary,
         marginLeft: 10
     },
     button2: {
@@ -76,6 +77,7 @@ export const styles = StyleSheet.create({
         height: 22,
         backgroundColor: theme.colors.background50,
         borderRadius: 5,
+        color: theme.colors.primary,
         marginLeft: 10
 
     },

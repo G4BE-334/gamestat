@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import { View, ScrollView, Text, KeyboardAvoidingView, Platform } from "react-native";
+import { View, ScrollView, Text, KeyboardAvoidingView, Platform,  } from "react-native";
 import {Feather} from "@expo/vector-icons";
+import uuid from 'react-native-uuid';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {COLLECTION_APPOINTMENTS} from '../../configs/database';
 
 import {styles} from './styles';
 import { theme } from "../../global/styles/theme";
@@ -21,6 +24,9 @@ import { Guilds } from "../Guilds";
 import { CategorySelect } from "../../components/CategorySelect";
 import { RectButton } from "react-native-gesture-handler";
 import { GuildProps } from "../../components/Guild";
+import { useNavigation } from "@react-navigation/native";
+import { RootStackParamList } from "../../routes/auth.routes";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 
 
@@ -32,6 +38,18 @@ export function AppointmentCreate() {
     const [category, setCategory] = useState('');
     const [openGuildsModal, setOpenGuildsModal] = useState(false);
     const [guild, setGuild] = useState<GuildProps>({} as GuildProps);
+
+    const [day, setDay] = useState('');
+    const [month, setMonth] = useState('');
+    const [hour, setHour] = useState('');
+    const [minute, setMinute] = useState('');
+    const [time, setTime] = useState('');
+    const [description, setDescription] = useState('');
+
+    
+    type homeScreenProp = StackNavigationProp<RootStackParamList, 'AppointmentCreate'>;
+
+    const navigation = useNavigation<homeScreenProp>();
 
     function handleOpenGuilds() {
         setOpenGuildsModal(true);
@@ -48,8 +66,28 @@ export function AppointmentCreate() {
 
     function handleCategorySelect(categoryId: string) {
         setCategory(categoryId);
-      }
+    }
     
+    function test() {
+        console.log(time);
+    }
+
+    async function handleSave() {
+        const newAppointment = {
+            id: uuid.v4(),
+            guild,
+            category,
+            date: `${month}/${day} at ${hour}:${minute}${time}`,
+            description
+        };
+
+        const storage = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
+        const appointments = storage ? JSON.parse(storage) : [];
+
+        await AsyncStorage.setItem(COLLECTION_APPOINTMENTS, JSON.stringify([...appointments, newAppointment]));
+        navigation.navigate('Home');
+    }
+
     return (
         <KeyboardAvoidingView style= {styles.container} behavior={Platform.OS == 'ios' ? 'padding' : 'height'}>
             {/* ScrollView is used here so the user can scroll up and down when typing in the text box.
@@ -88,9 +126,9 @@ export function AppointmentCreate() {
                                 <Text style = {[styles.label, {marginBottom: 12}]}> Date </Text>
 
                                 <View style={styles.column}>
-                                    <SmallInput maxLength={2} />
+                                    <SmallInput maxLength={2} onChangeText={setMonth} />
                                     <Text style={styles.divider}> / </Text>
-                                    <SmallInput maxLength={2} />
+                                    <SmallInput maxLength={2} onChangeText={setDay} />
                                 </View>
                             </View>
                             
@@ -98,13 +136,13 @@ export function AppointmentCreate() {
                                 <Text style={[styles.label, {marginBottom: 12}]}> Time </Text>
 
                                 <View style={styles.column}>
-                                    <SmallInput maxLength={2} />
+                                    <SmallInput maxLength={2} onChangeText={setHour} />
                                     <Text style={styles.divider}> : </Text>
-                                    <SmallInput maxLength={2} />
+                                    <SmallInput maxLength={2} onChangeText={setMinute} />
 
                                     <View>
-                                        <Button title={"PM"} style={styles.button1}/>
-                                        <Button title={"AM"} style={styles.button2}/>
+                                        <Button title={"PM"} style={styles.button1} onPress={() => setTime("PM")}/>
+                                        <Button title={"AM"} style={styles.button2} onPress={() => setTime("AM")}/>
 
                                     </View>
                                     
@@ -123,10 +161,10 @@ export function AppointmentCreate() {
                         <Text style={[styles.charLimit, {marginRight: 20}]}> Max 100 characters</Text>
                     </View>
 
-                    <TextArea multiline maxLength={100} numberOfLines={5} autoCorrect={false}/>
+                    <TextArea multiline maxLength={100} numberOfLines={5} autoCorrect={false} onChangeText={setDescription} />
 
                     <View style={styles.footer}>
-                        <Button title="Schedule"/>
+                        <Button title="Schedule" onPress={handleSave}/>
                     </View>
                     
                 </Background>

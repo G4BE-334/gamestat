@@ -13,10 +13,10 @@ import BannerImg from '../../assets/banner.png';
 import { Avatar } from "../Avatar";
 
 export type MemberProps = {
-    id: string,
-    username: string,
-    avatarUrl: string,
-    status: string
+    id: string;
+    username: string;
+    avatar_url: string;
+    status: string;
 }
 
 type Props = {
@@ -25,11 +25,11 @@ type Props = {
 
 export function Member({ data }: Props) {
     const {on, off} = theme.colors;
-    const isOnline = data.status === "Online";
+    const isOnline = data.status === "online";
     
     return (
         <View style={styles.container}>
-            <Avatar urlImage={data.avatarUrl}/>
+            <Avatar urlImage={data.avatar_url}/>
             <View>
                 <Text style = {styles.title}>
                     {data.username}

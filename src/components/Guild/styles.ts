@@ -16,13 +16,13 @@ export const styles = StyleSheet.create({
     },
     title: {
         fontFamily: theme.font.title700,
-        color: theme.colors.heading,
+        color: theme.colors.primary,
         fontSize: 18,
         marginBottom: 4,
     },
     type: {
         fontFamily: theme.font.text400,
-        color: theme.colors.highlight,
+        color: theme.colors.heading,
         fontSize: 13,
     },
 })

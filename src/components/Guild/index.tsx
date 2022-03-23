@@ -25,7 +25,7 @@ export function Guild({data, ...rest}: Props) {
 
         <View style={styles.content}>
             <View>
-                <Text style={styles.title}></Text>
+                <Text style={styles.title}>{data.name}</Text>
 
                 <Text style={styles.type}> {data.owner ? 'Admin' : 'Invited Member'} </Text>
             </View>

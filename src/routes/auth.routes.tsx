@@ -5,6 +5,7 @@ import {SignIn} from '../screens/SignIn';
 import { Home } from '../screens/Home';
 import { AppointmentDetails } from '../screens/AppointmentDetails';
 import { AppointmentCreate } from '../screens/AppointmentCreate';
+import { AppointmentProps } from '../components/Appointment';
 
 
 import { Background } from '../components/Background';
@@ -14,7 +15,7 @@ const {Navigator, Screen} = createStackNavigator();
 
 export type RootStackParamList = {
   Home: undefined;
-  AppointmentDetails: undefined;
+  AppointmentDetails: {guildSelected: AppointmentProps};
   AppointmentCreate: undefined;
 }
 
