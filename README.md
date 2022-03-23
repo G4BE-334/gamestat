@@ -33,7 +33,7 @@ There will be a full support to Discord authentication and integration.
 ## Observations:  
   ***I had some issues where the pages containing SVG images would not be loaded through expo on a web broswer, please be aware of that.***
   
-  **If you are running expo on a public wifi, you have to disable the firewall on windows for it to run on your mobile phone**
+  **If you are running expo on a public wifi, you have to disable the firewall on windows for it to run on your mobile phone.**
   **Using VPN can also affect the proper connection between Expo and your mobile device**
   
   *The discord server will only open if the server widget is enabled. You can only enable a server widget if you are the owner or have admin rights of the server. To do so just: Click on the server > Server setting > Click on "Widget" on left side > Click on "Enable server widget". Also make sure to set up a invite channel for the invite button to work. In case you are not an owner of the channel the invite button and open server button will be disabled on the application*
