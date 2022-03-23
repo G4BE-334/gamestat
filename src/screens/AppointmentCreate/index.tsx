@@ -27,6 +27,7 @@ import { GuildProps } from "../../components/Guild";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../../routes/auth.routes";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { ButtonTime } from "../../components/ButtonTime";
 
 
 
@@ -45,6 +46,9 @@ export function AppointmentCreate() {
     const [minute, setMinute] = useState('');
     const [time, setTime] = useState('');
     const [description, setDescription] = useState('');
+    const [checked1, setChecked1] = useState(false);
+    const [checked2, setChecked2] = useState(false);
+
 
     
     type homeScreenProp = StackNavigationProp<RootStackParamList, 'AppointmentCreate'>;
@@ -68,9 +72,17 @@ export function AppointmentCreate() {
         setCategory(categoryId);
     }
     
-    function test() {
-        console.log(time);
-    }
+    // function handleTime1(time: string) {
+    //     setTime(time);
+    //     setChecked1(true);
+    //     setChecked2(false);
+    // }
+
+    // function handleTime2(time: string) {
+    //     setTime(time);
+    //     setChecked2(true);
+    //     setChecked1(false);
+    // }
 
     async function handleSave() {
         const newAppointment = {
@@ -140,9 +152,9 @@ export function AppointmentCreate() {
                                     <Text style={styles.divider}> : </Text>
                                     <SmallInput maxLength={2} onChangeText={setMinute} />
 
-                                    <View>
-                                        <Button title={"PM"} style={styles.button1} onPress={() => setTime("PM")}/>
-                                        <Button title={"AM"} style={styles.button2} onPress={() => setTime("AM")}/>
+                                    <View >
+                                        <ButtonTime title={"AM"} style={[styles.button1, {opacity: checked1 ? 1 : 0.4}]} onPress={() => {setTime("AM"); setChecked1(true); setChecked2(false)}}/>
+                                        <ButtonTime title={"PM"} style={[styles.button2, {opacity: checked2 ? 1 : 0.4}]} onPress={() => {setTime("PM"); setChecked2(true); setChecked1(false)}}/>
 
                                     </View>
                                     

@@ -13,10 +13,9 @@ type Props = RectButtonProps & {
     checked?: boolean;
 }
 
-export function Button({title, checked, ...rest}: Props) {
+export function ButtonTime({title, checked, ...rest}: Props) {
     return (
        <RectButton 
-       style = {styles.container}
        {...rest}>
             <Text style = {styles.title}>
                 {title}

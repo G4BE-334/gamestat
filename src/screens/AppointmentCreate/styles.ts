@@ -69,16 +69,21 @@ export const styles = StyleSheet.create({
         backgroundColor: theme.colors.background50,
         borderRadius: 5,
         marginBottom: 4,
-        color: theme.colors.primary,
-        marginLeft: 10
+        marginLeft: 10,
+        borderWidth: 1,
+        borderColor: theme.colors.background80,
+
+
     },
     button2: {
         width: 22,
         height: 22,
         backgroundColor: theme.colors.background50,
         borderRadius: 5,
-        color: theme.colors.primary,
-        marginLeft: 10
+        marginLeft: 10,
+        borderColor: theme.colors.background80,
+        borderWidth: 1,
+
 
     },
 })
