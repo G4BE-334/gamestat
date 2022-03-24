@@ -1,31 +1,29 @@
 import React from "react";
 import { View, Text, Alert } from "react-native";
-import { RectButton } from "react-native-gesture-handler";
+import { RectButton, RectButtonProps } from "react-native-gesture-handler";
 import { useAuth } from "../../hooks/auth";
 import { Avatar } from "../Avatar";
 
 import {styles} from './styles';
 
-
-
-export function Profile() {
-    function handleSignOut() {
-        Alert.alert('Logout', 'Are you sure you want to log out?', [
-            {
-                text: 'Yes',
-                onPress: () => signOut()
-            },
-            {
-                text: 'No',
-                style: 'cancel',
-            }
-        ])
-    }
+export function Profile({...rest}: RectButtonProps) {
+    // function handleSignOut() {
+    //     Alert.alert('Logout', 'Are you sure you want to log out?', [
+    //         {
+    //             text: 'Yes',
+    //             onPress: () => signOut()
+    //         },
+    //         {
+    //             text: 'No',
+    //             style: 'cancel',
+    //         }
+    //     ])
+    // }
     
     const {user, signOut} = useAuth();
     return (
         <View style={styles.container}> 
-            <RectButton onPress={handleSignOut}>
+            <RectButton {...rest}>
                 <Avatar urlImage = {user.avatar}/>
             </RectButton>
             <View>

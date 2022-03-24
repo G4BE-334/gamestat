@@ -71,18 +71,6 @@ export function AppointmentCreate() {
     function handleCategorySelect(categoryId: string) {
         setCategory(categoryId);
     }
-    
-    // function handleTime1(time: string) {
-    //     setTime(time);
-    //     setChecked1(true);
-    //     setChecked2(false);
-    // }
-
-    // function handleTime2(time: string) {
-    //     setTime(time);
-    //     setChecked2(true);
-    //     setChecked1(false);
-    // }
 
     async function handleSave() {
         const newAppointment = {

@@ -19,11 +19,20 @@ import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import { RootStackParamList } from "../../routes/auth.routes";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { COLLECTION_APPOINTMENTS } from "../../configs/database";
+import { ModalView } from "../../components/ModalView";
+import { ModalSO } from "../../components/ModalSO";
+import { Button } from "../../components/Button";
+import { useAuth } from "../../hooks/auth";
+import { RectButton } from "react-native-gesture-handler";
 
 export function Home() {
   const [category, setCategory] = useState('');
   const [appointments, setAppointments] = useState<AppointmentProps[]>([]);
   const [loading, setLoading] = useState(true);
+  const [openSignOutModal, setOpenSignOut] = useState(false);
+
+  const {user, signOut} = useAuth();
+
 
   type homeScreenProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
@@ -38,8 +47,20 @@ export function Home() {
     navigation.navigate('AppointmentDetails', {guildSelected});
   }
 
+  function handleSignOut() {
+    signOut();
+  }
+
   function handleAppointmentCreate() {
     navigation.navigate('AppointmentCreate');
+  }
+
+  function handleOpenSignOut() {
+    setOpenSignOut(true);
+  }
+
+  function handleCloseSignOut() {
+    setOpenSignOut(false);
   }
 
   async function loadAppointments() {
@@ -63,7 +84,7 @@ export function Home() {
     <Background>
 
         <View style={styles.header}>
-          <Profile/>
+          <Profile onPress= {handleOpenSignOut}/>
           <ButtonAdd onPress={handleAppointmentCreate}/>
         </View>
         
@@ -83,6 +104,22 @@ export function Home() {
             contentContainerStyle={{paddingBottom: 69}}/>
           </>
         }
+        <View style={styles.modal}>
+          <ModalSO visible={openSignOutModal} closeModal={handleCloseSignOut} dimension={100}>
+            <View style={styles.modalSO}>
+                <Text style = {styles.desire}>Log out from </Text>
+                <Text style = {styles.game}>Game</Text>
+                <Text style = {styles.stat}>Stat</Text>
+                <Text style = {styles.game}>? </Text>
+            </View>
+            <View style={styles.buttons}>
+                <Button title="No" style={styles.no} onPress={handleCloseSignOut}/>
+                
+                <Button title="Yes" style={styles.yes} onPress={handleSignOut}/>
+            </View>
+          </ModalSO>
+        </View>
     </Background>
+    
   );
 }
