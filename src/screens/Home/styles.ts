@@ -21,7 +21,6 @@ export const styles = StyleSheet.create({
     modal: {
         flex: 1,
         height: '50%',
-        backgroundColor: theme.colors.primary,
         color: theme.colors.primary
     },
     title: {
