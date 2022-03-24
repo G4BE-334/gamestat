@@ -72,8 +72,6 @@ export const styles = StyleSheet.create({
         marginLeft: 10,
         borderWidth: 1,
         borderColor: theme.colors.background80,
-
-
     },
     button2: {
         width: 22,
@@ -83,7 +81,5 @@ export const styles = StyleSheet.create({
         marginLeft: 10,
         borderColor: theme.colors.background80,
         borderWidth: 1,
-
-
     },
 })

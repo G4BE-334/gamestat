@@ -6,7 +6,6 @@ import {styles} from './styles';
 import PlayerSvg from '../../assets/player.svg';
 import CalendarSvg from '../../assets/calendar.svg';
 
-
 import { GuildIcon } from "../GuildIcon";
 import { categories } from "../../utils/categories";
 import { theme } from "../../global/styles/theme";
@@ -32,7 +31,6 @@ export function Appointment({data, ...rest}: Props) {
     
     return (
         <RectButton {...rest}> 
-
             <View style={styles.container}>
                 <LinearGradient style = {styles.guildIconContainer} colors = {[background50, background60]}>
                     <GuildIcon guildId={data.guild.id} iconId={data.guild.icon}/>
@@ -56,7 +54,6 @@ export function Appointment({data, ...rest}: Props) {
                             {data.date}
                         </Text>
                     
-
                         <View style={styles.info}>
                             <PlayerSvg fill={!owner? off : on}/>
 

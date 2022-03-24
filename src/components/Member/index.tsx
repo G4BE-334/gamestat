@@ -1,15 +1,8 @@
 import React from "react";
-import { View, ImageBackground, Text, FlatList } from "react-native";
-import {Fontisto} from "@expo/vector-icons";
+import { View, Text } from "react-native";
 
 import {styles} from './styles';
-import { LinearGradient } from "expo-linear-gradient";
 import { theme } from "../../global/styles/theme";
-import { Background } from "../../components/Background";
-import { ListHeader } from "../../components/ListHeader";
-import { Header } from "../../components/Header";
-import { BorderlessButton } from "react-native-gesture-handler";
-import BannerImg from '../../assets/banner.png';
 import { Avatar } from "../Avatar";
 
 export type MemberProps = {
@@ -35,8 +28,7 @@ export function Member({ data }: Props) {
                     {data.username}
                 </Text>
                 <View style = {styles.status}>
-                    <View style={[styles.bulletStatus, {backgroundColor: isOnline ? on : off}]} />
-                    
+                    <View style={[styles.bulletStatus, {backgroundColor: isOnline ? on : off}]} />                   
                     <Text style = {styles.nameStatus}>
                         {isOnline ? "Online" : "Off"}
                     </Text>

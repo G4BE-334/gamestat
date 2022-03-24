@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { View, ImageBackground, Text, FlatList, Alert, Share, Platform } from "react-native";
+import { BorderlessButton } from "react-native-gesture-handler";
 import {Fontisto} from "@expo/vector-icons";
+import { useRoute } from "@react-navigation/native";
 
 import {styles} from './styles';
-import { LinearGradient } from "expo-linear-gradient";
 import { theme } from "../../global/styles/theme";
 import { Background } from "../../components/Background";
 import { ListHeader } from "../../components/ListHeader";
 import { Header } from "../../components/Header";
-import { BorderlessButton } from "react-native-gesture-handler";
 import BannerImg from '../../assets/banner.png';
 import { Member, MemberProps } from "../../components/Member";
 import { ListDivider } from "../../components/ListDivider";
 import { ButtonIcon } from "../../components/ButtonIcon";
-import { useRoute } from "@react-navigation/native";
 import { AppointmentProps } from "../../components/Appointment";
 import { Load } from "../../components/Load";
+import {api} from '../../services/api';
 
 import * as Linking from 'expo-linking';
-
-import {api} from '../../services/api';
 
 type Params = {
     guildSelected: AppointmentProps
@@ -83,7 +81,9 @@ export function AppointmentDetails() {
                     <Text style={styles.subtitle}>{guildSelected.description}</Text>
                 </View>
             </ImageBackground>
-            {loading ? <Load/> :
+            {
+            loading ? <Load/> 
+            :
                 <>
                     <ListHeader title ="Players" subtitle ={`Total: ${Widget.members.length}`}/>
                     <FlatList data={Widget.members} keyExtractor={item => item.id} renderItem={({ item }) => (
@@ -99,8 +99,7 @@ export function AppointmentDetails() {
                 <View style={styles.footer}>
                     <ButtonIcon title="Start New Game" onPress={handleOpenGuild}/>
                 </View>
-            }
-            
+            }    
         </Background>  
     );
 }

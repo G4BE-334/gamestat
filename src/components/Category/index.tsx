@@ -28,20 +28,17 @@ export function Category({
 
         <LinearGradient style = {styles.container}
             colors = {[background50, background60]}>
-
             <LinearGradient style= {[styles.content, {opacity: checked ? 1 : 0.4}]} colors = {[background50, background60]}>
                 {
                     hasCheckBox &&
                     <View style={checked ? styles.checked : styles.notCheck}/>
                 }    
-                    
                     <Icon width={48} height={48}/>
                     <Text style={styles.title}>
                         {title}
                     </Text>
             </LinearGradient>
         </LinearGradient>
-
     </RectButton>
   );
 }

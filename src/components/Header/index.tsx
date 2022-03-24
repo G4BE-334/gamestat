@@ -6,7 +6,6 @@ import { Feather } from "@expo/vector-icons";
 import {styles} from './styles';
 import { LinearGradient } from "expo-linear-gradient";
 import { theme } from "../../global/styles/theme";
-import { Background } from "../../components/Background";
 import { useNavigation } from "@react-navigation/native";
 
 type Props = {
@@ -15,8 +14,7 @@ type Props = {
 }
 
 export function Header({title, action}: Props) { 
-    const {background100, background50, heading} = theme.colors;
-    
+    const {background100, background50, heading} = theme.colors;   
     const navigation = useNavigation();
 
     function handleGoBack() {

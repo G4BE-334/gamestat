@@ -1,8 +1,6 @@
 import React from "react";
-import { RectButton, RectButtonProps} from "react-native-gesture-handler";
-import { Image, View } from "react-native";
 import DiscordSvg from "../../assets/discord.svg";
-
+import { Image, View } from "react-native";
 import {styles} from './styles';
 
 const {CDN_IMAGE} = process.env;
@@ -22,7 +20,5 @@ export function GuildIcon({guildId, iconId, ...rest}: Props) {
             <DiscordSvg width={40} height={40}/>
         }
         </View>
-
-
     );
 }

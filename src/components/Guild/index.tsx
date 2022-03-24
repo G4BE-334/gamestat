@@ -18,7 +18,6 @@ import { styles } from "./styles";
 import { theme } from "../../global/styles/theme";
 
 export function Guild({data, ...rest}: Props) {
-
   return (
     <TouchableOpacity style= {styles.container} activeOpacity={0.7} {...rest}>
         <GuildIcon guildId={data.id} iconId = {data.icon}/>

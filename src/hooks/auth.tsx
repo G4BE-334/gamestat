@@ -9,12 +9,10 @@ type User = {
     token: string;
 }
 
-
 import * as AuthSession from 'expo-auth-session'
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// import {SCOPE, CLIENT_ID, REDIRECT_URI, CDN_IMAGE, RESPONSE_TYPE} from '../configs';
 const {SCOPE} = process.env;
 const {CLIENT_ID} = process.env;
 const {CDN_IMAGE} = process.env;
@@ -74,9 +72,7 @@ function AuthProvider({children}: AuthProviderProps) {
                 await AsyncStorage.setItem(COLLECTION_USERS, JSON.stringify(userData));
                 setUser(userData);
 
-               
-
-            AuthSession.startAsync({ authUrl });
+                AuthSession.startAsync({ authUrl });
             }
         } catch  {
             throw new Error("It was not possible to sign in to Discord")
@@ -99,12 +95,9 @@ function AuthProvider({children}: AuthProviderProps) {
         }
     }
 
-
-
     useEffect(() => {
         loadUserStoragedData();
     },[]);
-
 
     return (
         <AuthContext.Provider value={{user, loading, signIn, signOut}}>
@@ -116,7 +109,6 @@ function AuthProvider({children}: AuthProviderProps) {
 // 
 function useAuth() {
     const context = useContext(AuthContext);
-
     return context;
 }
 

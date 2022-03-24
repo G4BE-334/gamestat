@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { View, FlatList, Text } from "react-native";
+import { View, FlatList} from "react-native";
 import { Guild, GuildProps } from "../../components/Guild";
 import { ListDivider } from "../../components/ListDivider";
 import { Load } from "../../components/Load";

@@ -1,8 +1,7 @@
 import React, {ReactNode} from "react";
 import { View, Modal, ModalProps, TouchableWithoutFeedback } from "react-native";
 import { Background } from "../Background";
-
-
+import { styles } from "./styles";
 
 type Props = ModalProps & {
     children: ReactNode;
@@ -10,11 +9,7 @@ type Props = ModalProps & {
     dimension?: number;
 }
 
-
-import { styles } from "./styles";
-
 export function ModalSO({children, closeModal, dimension, ...rest}: Props) {
-  
   return (
     <Modal transparent statusBarTranslucent animationType = "slide" {...rest} >
         <TouchableWithoutFeedback>

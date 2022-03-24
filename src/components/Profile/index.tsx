@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Alert } from "react-native";
+import { View, Text } from "react-native";
 import { RectButton, RectButtonProps } from "react-native-gesture-handler";
 import { useAuth } from "../../hooks/auth";
 import { Avatar } from "../Avatar";
@@ -7,20 +7,8 @@ import { Avatar } from "../Avatar";
 import {styles} from './styles';
 
 export function Profile({...rest}: RectButtonProps) {
-    // function handleSignOut() {
-    //     Alert.alert('Logout', 'Are you sure you want to log out?', [
-    //         {
-    //             text: 'Yes',
-    //             onPress: () => signOut()
-    //         },
-    //         {
-    //             text: 'No',
-    //             style: 'cancel',
-    //         }
-    //     ])
-    // }
-    
-    const {user, signOut} = useAuth();
+    const {user} = useAuth();
+
     return (
         <View style={styles.container}> 
             <RectButton {...rest}>
@@ -35,7 +23,6 @@ export function Profile({...rest}: RectButtonProps) {
                         {user.firstName}    
                     </Text>
                 </View>
-
                 <Text style = {styles.message}>
                     Today is victory day!
                 </Text>

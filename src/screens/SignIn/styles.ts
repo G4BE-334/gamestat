@@ -15,7 +15,6 @@ export const styles = StyleSheet.create({
     content: {
         marginTop: -40,
         paddingHorizontal: 50
-
     },
     title: {
         color: theme.colors.primary,
@@ -36,6 +35,5 @@ export const styles = StyleSheet.create({
     footer: {
         marginBottom: getBottomSpace(),
         fontFamily: theme.font.text500
-
     }
 });

@@ -1,5 +1,9 @@
 import React, {useState, useCallback} from "react";
 import { View, FlatList, Text } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation, useFocusEffect } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+
 import { ButtonAdd } from "../../components/ButtonAdd";
 import { CategorySelect } from "../../components/CategorySelect";
 import { Profile } from "../../components/Profile";
@@ -7,23 +11,13 @@ import { ListHeader } from "../../components/ListHeader";
 import { Appointment, AppointmentProps } from "../../components/Appointment";
 import { ListDivider } from "../../components/ListDivider";
 import { Background } from '../../components/Background';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Load } from "../../components/Load";
-
-
-
-
-
 import { styles } from "./styles";
-import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import { RootStackParamList } from "../../routes/auth.routes";
-import { StackNavigationProp } from "@react-navigation/stack";
 import { COLLECTION_APPOINTMENTS } from "../../configs/database";
-import { ModalView } from "../../components/ModalView";
 import { ModalSO } from "../../components/ModalSO";
 import { Button } from "../../components/Button";
 import { useAuth } from "../../hooks/auth";
-import { RectButton } from "react-native-gesture-handler";
 
 export function Home() {
   const [category, setCategory] = useState('');
@@ -33,7 +27,6 @@ export function Home() {
 
   const {user, signOut} = useAuth();
 
-
   type homeScreenProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
   const navigation = useNavigation<homeScreenProp>();
@@ -41,7 +34,6 @@ export function Home() {
   function handleCategorySelect(categoryId: string) {
     categoryId === category ? setCategory ('') : setCategory(categoryId);
   }
-
 
   function handleAppointmentDetails(guildSelected: AppointmentProps) {
     navigation.navigate('AppointmentDetails', {guildSelected});
@@ -82,14 +74,12 @@ export function Home() {
 
   return (
     <Background>
-
         <View style={styles.header}>
           <Profile onPress= {handleOpenSignOut}/>
           <ButtonAdd onPress={handleAppointmentCreate}/>
         </View>
         
         <CategorySelect categorySelected={category} setCategory={handleCategorySelect}/>
-
         {
           loading ? <Load /> :
           <>
@@ -113,8 +103,7 @@ export function Home() {
                 <Text style = {styles.game}>? </Text>
             </View>
             <View style={styles.buttons}>
-                <Button title="No" style={styles.no} onPress={handleCloseSignOut}/>
-                
+                <Button title="No" style={styles.no} onPress={handleCloseSignOut}/>     
                 <Button title="Yes" style={styles.yes} onPress={handleSignOut}/>
             </View>
           </ModalSO>

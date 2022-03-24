@@ -3,6 +3,9 @@ import { View, ScrollView, Text, KeyboardAvoidingView, Platform,  } from "react-
 import {Feather} from "@expo/vector-icons";
 import uuid from 'react-native-uuid';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { StackNavigationProp } from "@react-navigation/stack";
+import { useNavigation } from "@react-navigation/native";
+import { RectButton } from "react-native-gesture-handler";
 import {COLLECTION_APPOINTMENTS} from '../../configs/database';
 
 import {styles} from './styles';
@@ -15,25 +18,10 @@ import { TextArea } from "../../components/TextArea";
 import { Button } from "../../components/Button";
 import { ModalView } from "../../components/ModalView";
 import { Guilds } from "../Guilds";
-
-
-
-
-
-
 import { CategorySelect } from "../../components/CategorySelect";
-import { RectButton } from "react-native-gesture-handler";
 import { GuildProps } from "../../components/Guild";
-import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../../routes/auth.routes";
-import { StackNavigationProp } from "@react-navigation/stack";
 import { ButtonTime } from "../../components/ButtonTime";
-
-
-
-
-
-
 
 export function AppointmentCreate() { 
     const [category, setCategory] = useState('');
@@ -119,8 +107,7 @@ export function AppointmentCreate() {
 
                                 <Feather name="chevron-right" color = {theme.colors.heading} size={18} />
                             </View>
-                        </RectButton>
-                        
+                        </RectButton>                 
                         <View style={styles.field}>
                             <View>
                                 <Text style = {[styles.label, {marginBottom: 12}]}> Date </Text>
@@ -130,34 +117,24 @@ export function AppointmentCreate() {
                                     <Text style={styles.divider}> / </Text>
                                     <SmallInput maxLength={2} onChangeText={setDay} />
                                 </View>
-                            </View>
-                            
+                            </View>              
                             <View>
                                 <Text style={[styles.label, {marginBottom: 12}]}> Time </Text>
-
                                 <View style={styles.column}>
                                     <SmallInput maxLength={2} onChangeText={setHour} />
                                     <Text style={styles.divider}> : </Text>
                                     <SmallInput maxLength={2} onChangeText={setMinute} />
-
                                     <View >
                                         <ButtonTime title={"AM"} style={[styles.button1, {opacity: checked1 ? 1 : 0.4}]} onPress={() => {setTime("AM"); setChecked1(true); setChecked2(false)}}/>
                                         <ButtonTime title={"PM"} style={[styles.button2, {opacity: checked2 ? 1 : 0.4}]} onPress={() => {setTime("PM"); setChecked2(true); setChecked1(false)}}/>
-
                                     </View>
-                                    
                                 </View>
                             </View>
-
-
                         </View>
-                        
-                        
                     </View>
 
                     <View style={[styles.field, {marginBottom: 12}]}>
-                        <Text style={[styles.label, {marginLeft: 20}]}> Description </Text>
-                        
+                        <Text style={[styles.label, {marginLeft: 20}]}> Description </Text>                     
                         <Text style={[styles.charLimit, {marginRight: 20}]}> Max 100 characters</Text>
                     </View>
 
@@ -165,8 +142,7 @@ export function AppointmentCreate() {
 
                     <View style={styles.footer}>
                         <Button title="Schedule" onPress={handleSave}/>
-                    </View>
-                    
+                    </View>                  
                 </Background>
             </ScrollView>
 

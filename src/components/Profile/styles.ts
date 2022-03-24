@@ -25,6 +25,5 @@ export const styles = StyleSheet.create({
         fontFamily: theme.font.text400,
         color: theme.colors.primary,
         flexDirection: 'column',
-
     }
 })
